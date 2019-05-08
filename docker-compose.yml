@@ -1,0 +1,32 @@
+version: '3'
+services:
+  moonshot-ha:
+    command: yarn watch
+    volumes:
+    - .:/app
+    - /app/node_modules
+    container_name: moonshot-ha
+    restart: always
+    build: ./
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    links:
+      - mongo
+      - redis
+    environment:
+      - LISTEN_ADDRESS=${LISTEN_ADDRESS}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - DEBUG=${DEBUG}
+      - MONGODB_HOSTNAME=${MONGODB_HOSTNAME}
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGODB_NAME=${MONGODB_NAME}
+  redis:
+    container_name: redis
+    image: 'redis:alpine'
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
