@@ -13,6 +13,7 @@
   "rules": {
     "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/camelcase": ["error", { "allow": ["created_at"] }]
+    "@typescript-eslint/camelcase": ["error", { "allow": ["created_at"] }],
+    "@typescript-eslint/no-parameter-properties": 0
   }
 }

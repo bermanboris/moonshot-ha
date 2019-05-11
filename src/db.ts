@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 import { sleep } from './utils/sleep';
 import { createLogger } from './debug';
+import { config } from './config';
 
-const { MONGODB_HOSTNAME, MONGODB_PORT, MONGODB_NAME } = process.env;
-const uri = `mongodb://${MONGODB_HOSTNAME}:${MONGODB_PORT}/${MONGODB_NAME}`;
+const { mongo } = config;
+const uri = `mongodb://${mongo.hostname}:${mongo.port}/${mongo.name}`;
 const log = createLogger('db');
 
 export async function connect() {
