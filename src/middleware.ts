@@ -1,10 +1,9 @@
-import { Application, Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import { UAParser } from 'ua-parser-js';
+import { Application, NextFunction, Request, Response } from 'express';
 import ExpressRateLimit from 'express-rate-limit';
+import morgan from 'morgan';
 import RedisStore from 'rate-limit-redis';
-import ip from 'ip';
+import { UAParser } from 'ua-parser-js';
 import { redis } from './redis';
 
 export function userAgent(req: Request, _: Response, next: NextFunction) {
@@ -34,11 +33,6 @@ export function rateLimiter(minutes: number = 1, limit: number = 30) {
 }
 
 export function applyMiddlewares(app: Application) {
-  app.use((_, res, next) => {
-    res.setHeader('ip', ip.address());
-    return next();
-  });
-
   app.enable('trust proxy');
   app.use(restrictRequests);
   app.use(userAgent);

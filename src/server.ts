@@ -1,9 +1,9 @@
 import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
-import { applyMiddlewares } from './middleware';
-import './controllers/form-submission';
-import { FormSubmissionService } from './services/form-submission';
 import { Constants } from './constants';
+import './controllers/form-submission';
+import { applyMiddlewares } from './middleware';
+import { FormSubmissionService } from './services/form-submission';
 
 export const container = new Container();
 
@@ -12,7 +12,7 @@ container
   .to(FormSubmissionService)
   .inSingletonScope();
 
-const inversifyServer = new InversifyExpressServer(container);
+export const inversifyServer = new InversifyExpressServer(container);
 inversifyServer.setConfig(applyMiddlewares);
 
 export const server = inversifyServer.build();

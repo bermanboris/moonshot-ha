@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import {
-  FormSubmissionModel,
   FormSubmission,
+  FormSubmissionModel,
   SubmissionFilterOptions,
 } from '../models/form-submission';
 
@@ -13,7 +13,6 @@ export class FormSubmissionService {
 
   public findSubmissions(options: SubmissionFilterOptions) {
     const { domain, from, until, skip, limit } = options;
-
     return FormSubmissionModel.find({
       domain: domain,
       created_at: { $lte: from, $gte: until },

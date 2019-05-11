@@ -7,8 +7,7 @@
     "lib": ["es2015", "es2016", "es2017", "dom"],
     "strict": true,
     "sourceMap": true,
-    // "noEmit": true,
-    "declaration": true,
+    "declaration": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
@@ -16,5 +15,9 @@
     "outDir": "dist",
     "typeRoots": ["node_modules/@types", "types"]
   },
-  "include": ["src", "types/index.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "types/index.d.ts",
+    "node_modules/jest-extended/types/**/*.d.ts"
+  ]
 }

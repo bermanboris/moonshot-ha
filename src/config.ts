@@ -7,6 +7,7 @@ export const config = {
     hostname: process.env.MONGODB_HOSTNAME,
     port: Number(process.env.MONGODB_PORT),
     name: process.env.MONGODB_NAME,
+    uri: global.__MONGO_URI__,
   },
   redis: {
     hostname: process.env.REDIS_HOSTNAME,
