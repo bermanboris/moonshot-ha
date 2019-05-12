@@ -1,22 +1,20 @@
-# Central Perk API
+# Moonshot-HA
 
-### Manage coffee deliveries using Bringg service
+### Scalable microservice that handles form submissions
 
 ## Summary
 
-This API provides exposes two routes. First route is used for adding new tasks (orders).
-And the second one, is used for getting customer tasks from previous week by his phone
-number.
-
-App is currently deployed to the cloud. You can make requests without setting up the
-application locally. You can find HTTPie examples below.
+> This repository contains source code of a microservice written in TypeScript and running
+> in Node.js environment. It uses Inversify.js for dependency inversion. Redis for storing
+> allowed hosts, and rate limited IP addresses. MongoDB for storing unstructured form data
+> submissions. Development is done using Docker and Docker Compose.
 
 ## Installation
 
-Install dependencies using npm:
+Install dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Running the application locally
@@ -26,7 +24,7 @@ npm install
 > necessary for API to work. You can use ".env.example" file as your boilerplate.
 
 ```bash
-npm run watch
+docker-compose -f "docker-compose.yml" up -d --build
 
 # App is running at http://127.0.0.1:8080
 ```
@@ -34,28 +32,23 @@ npm run watch
 ## Running the tests
 
 ```bash
-npm run test
+yarn test
 ```
 
 ## Usage (using HTTPie)
 
-### Adding new task (and customer)
+### Adding new form submission
 
 > If you will try to add new customer with existing phone number, for some reason Bringg
 > API will return 401 error. This is unexpected behaviour, and it is not handled by the
 > application.
 
-> Phone number has to be in **very** specific format (+xxx-xxxx-xxxx), otherwise it won't
-> be added to the customer object by Bringg at all.
-
 ```bash
-http POST https://api-qt6pdk5x6q-uc.a.run.app address="New York" name="John" phone="123-4567-8901"
+http POST http://localhost:3000 name="John"
 ```
 
-### Getting customer tasks from previous week (by phone number)
-
-> In order to get customer tasks, phone number has to be provided via GET query parameter
+### Getting the tasks by hostname
 
 ```bash
-http GET https://api-qt6pdk5x6q-uc.a.run.app phone=="+12345678901"
+http GET http://localhost:3000/ domain=="localhost"
 ```
