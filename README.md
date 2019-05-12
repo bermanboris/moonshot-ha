@@ -26,7 +26,7 @@ yarn install
 ```bash
 docker-compose -f "docker-compose.yml" up -d --build
 
-# App is running at http://127.0.0.1:8080
+# App is running at http://localhost:3000
 ```
 
 ## Running the tests
