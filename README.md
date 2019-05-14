@@ -7,7 +7,7 @@
 > This repository contains source code of a microservice written in TypeScript and running
 > in Node.js environment. It uses Inversify.js for dependency inversion. Redis for storing
 > allowed hosts, and rate limited IP addresses. MongoDB for storing unstructured form data
-> submissions. Development is done using Docker and Docker Compose.
+> submissions. Development is done using Docker Compose.
 
 ## Installation
 
@@ -15,6 +15,13 @@ Install dependencies:
 
 ```bash
 yarn install
+```
+
+Making sure you have .env file and set the environment variables correctly:
+
+```bash
+# use example file as start point
+cp .env.example .env
 ```
 
 ## Running the application locally
