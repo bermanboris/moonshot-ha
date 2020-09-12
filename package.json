@@ -128,7 +128,7 @@
     "ip": "^1.1.5",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "rate-limit-redis": "^1.6.0",
     "reflect-metadata": "^0.1.13",
     "ua-parser-js": "^0.7.20"
